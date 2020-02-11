@@ -3,13 +3,11 @@ import ReactMapGL, {Marker, Layer} from "react-map-gl";
 import * as zipCode from "./zip-code.json";
 import {Button, Container} from 'react-bootstrap';
 import styled from 'styled-components';
-import PieChart from 'react-minimal-pie-chart';
 import Header from "./Header";
 import LeftContainer from "./LeftContainer";
 import data from "./map.geojson";
 import DataContainer from "./DataContainer";
 import {Circle} from "react-simple-shapes"
-
 
 export default function BigMap() {
     const SIZE = 30;
@@ -30,15 +28,19 @@ export default function BigMap() {
   `;
 
   const MyCircle = styled(Circle)`
-    opacity: 0.75;
+    opacity: 0.2;
+    transform: translate(-50%, -50%);    
+    backgroundColor: red;
+    height: 200; 
+    width: 200;
   `;
 
   const [viewport,setViewport] = useState({
     latitude: 47.6062,
     longitude: -122.3321,
-    width: "100vw",
+    width: "100%",
     height: "95vh",
-    zoom: 11
+    zoom: 10.5
   });
 
     const [isHovered, updateIsHovered] = useState(false);
@@ -54,31 +56,38 @@ export default function BigMap() {
     check6: false
   });
 
-    const [check, setCheck] = useState(false);
-    return (
-    <ReactMapGL
-          {...viewport}
-          mapboxApiAccessToken="pk.eyJ1IjoibXMxOTA3IiwiYSI6ImNrNjhjMXB0eTAzZjUzZm9nbmQzMGc4Y3QifQ.ZuJyRlBq6Wo2l_RPrARpnQ"
-        mapStyle="mapbox://styles/ms1907/ck68cppyd0bbp1ipm1z710o6z"
-              onViewportChange={viewport => {
-                            setViewport(viewport);
-                  }}
-        onDblClick={handleClick}
-        onClick={() => {updateCheckDataCon(false);}
-        }
-          >
-            <Marker key={"a"} latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-800} offsetTop={-400}>
-                        <LeftContainer filters={filters} updateFilters={updateFilters}/>
-                     </Marker>
+  const ColumnDiv = styled.div`
+    float: left;
+    padding: 10px;
+    width: 30%;
+    word-wrap: break-word;    
+  `;
 
-                     {checkDataCon && <Marker key={"ab"} latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={350} offsetTop={-400}>
-                        <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon}/>
-                      </Marker>}
-            {markers.map((m, i) =>
-            <div>
-                <Marker {...m} key={i} draggable={true} onDrag={handleClick}>
-                    <svg
-                          height={SIZE}
+  const [check, setCheck] = useState(false);
+  
+    return (
+      <div>
+        <ColumnDiv className="column left">
+          <LeftContainer filters={filters} updateFilters={updateFilters}/>
+        </ColumnDiv>
+        <ColumnDiv className="column middle">
+        <ReactMapGL
+            {...viewport}
+            mapboxApiAccessToken="pk.eyJ1IjoibXMxOTA3IiwiYSI6ImNrNjhjMXB0eTAzZjUzZm9nbmQzMGc4Y3QifQ.ZuJyRlBq6Wo2l_RPrARpnQ"
+          mapStyle="mapbox://styles/ms1907/ck68cppyd0bbp1ipm1z710o6z"
+                
+          onDblClick={handleClick}
+          onClick={() => {updateCheckDataCon(false);}
+          }
+            >
+              <Marker key={"a"} latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-800} offsetTop={-400}>
+                      </Marker>
+
+                     
+              {markers.map((m, i) =>
+                <div>
+                  <Marker {...m} key={i} draggable={true} onDrag={handleClick}>
+                      <svg height={SIZE}
                           viewBox="0 0 24 24"
                           className="aaa"
                           style={{
@@ -91,16 +100,22 @@ export default function BigMap() {
                           onMouseEnter={()=>{updateIsHovered(true)}}
                           onMouseLeave={()=>{updateIsHovered(false)}}
                         >
-
-                          <path d={ICON} />
-                        </svg>
-                </Marker>
-                <Marker {...m} key={i} draggable={true} onDrag={handleClick}>
-                                    <MyCircle/>
-                </Marker>
+                        <path d={ICON} />
+                      </svg>
+                  </Marker>
+                  <Marker {...m} key={i} draggable={true} onDrag={handleClick}>
+                    <MyCircle viewBox="-24 -24 24 24"/>
+                  </Marker>
+                  
                 </div>
-                )}
-      </ReactMapGL>
+              )}
+          </ReactMapGL>
+        </ColumnDiv>
+        <ColumnDiv className="column right" id="right-col" >
+          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon}/>
+        </ColumnDiv>
+      </div>
+      
     );
 
 }

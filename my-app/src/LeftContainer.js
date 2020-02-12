@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}`;
 }
 
 export default function LeftContainer(props) {
@@ -38,29 +38,28 @@ const marks = [
 
 
 
-    const InfoBox = styled.div`
-          height: 400px;
-          width: 400px;
-          margin: 20px 0px 0px 10px;
-          background: white;
-   `;
-   const Box = styled.div`
-             height: 100px;
-             width: 350px;
-             background: white;
-      `;
+//     const InfoBox = styled.div`
+//           height: 400px;
+//           width: 400px;
+//           margin: 20px 0px 0px 10px;
+//           background: white;
+//    `;
+//    const Box = styled.div`
+//              height: 100px;
+//              width: 350px;
+//              background: white;
+//       `;
    const CustomSlider = styled(Slider)`
-        margin: 30px 20px;
-        padding: 0px 0px;
+        // padding: 50px;
    `;
 
         return(
-            <InfoBox>
+            <div>
                 <h3>Highlight Features Containing Similar Data</h3>
                 <p>Hover over counties to highlight counties that share the same name.</p>
-                <Box>
-                <CustomSlider
-                        defaultValue={50}
+                <div>
+                    <CustomSlider
+                        defaultValue={props.radius}
                         getAriaValueText={valuetext}
                         aria-labelledby="discrete-slider"
                         max={2}
@@ -68,9 +67,10 @@ const marks = [
                         step={0.25}
                         marks={marks}
                         valueLabelDisplay="auto"
+                        onChange={(event, r)=>{props.updateRadius(r)}}
                       />
-                </Box>
-                <FormControlLabel
+                </div>
+                {/* <FormControlLabel
                     control={
                             <Checkbox checked={false} onChange={()=>{}} value="checkedA" />
                          }
@@ -105,8 +105,8 @@ const marks = [
                         <Checkbox checked={false} onChange={()=>{}} value="checkedA" />
                     }
                     label="Secondary"
-                />
-            </InfoBox>
+                /> */}
+            </div>
         );
 
 

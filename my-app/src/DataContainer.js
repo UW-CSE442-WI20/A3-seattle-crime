@@ -6,29 +6,8 @@ import ReactMapGL, {Marker} from "react-map-gl";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
-
-const marks = [
-  {
-    value: 0,
-    label: '0',
-  },
-  {
-    value: 0.5,
-    label: '0.5',
-  },
-  {
-    value: 1,
-    label: '1',
-  },
-  {
-      value: 1.5,
-      label: '1.5',
-   },
-  {
-    value: 2,
-    label: '2',
-  },
-];
+import PieChart from 'react-minimal-pie-chart';
+import BarChart from 'react-bar-chart';
 
 const CloseButton = styled(IconButton)`
     margin: 0px; 0px;
@@ -40,44 +19,66 @@ const Headline = styled.div`
     text-align: center;
 `;
 
+const pieData = [
+    { title: 'Misdemeanors', value: 10, color: '#E38627' },
+    { title: 'Assaults', value: 15, color: '#C13C37' },
+    { title: 'Murders', value: 20, color: '#6A2135' },
+  ];
+
+const barData = [
+    {text: '1990', value: 500}, 
+    {text: '1991', value: 300} 
+  ];
+
+
+
 function valuetext(value) {
   return `${value}°C`;
 }
 
-    const InfoBox = styled.div`
-          height: 400px;
-          width: 400px;
-          margin: 20px 0px 0px 10px;
-          background: white;
-   `;
+//     const InfoBox = styled.div`
+//           height: 400px;
+//           width: 400px;
+//           margin: 20px 0px 0px 10px;
+//           background: white;
+//    `;
 
-   const Box = styled.div`
-             height: 200px;
-             width: 350px;
-             background: white;
-      `;
-   const CustomSlider = styled(Slider)`
-        margin: 30px 20px;
-        padding: 0px 0px;
-   `;
+//    const Box = styled.div`
+//              height: 200px;
+//              width: 350px;
+//              background: white;
+//       `;
 
 export default class LeftContainer extends PureComponent {
-
     render() {
+        
+        if (this.props.markers.length === 0) {
+            return <div></div>;
+        } else {
+            return(
+                <div>
+                    <CloseButton aria-label="close" onClick={()=>{this.props.updateCheckDataCon(false); this.props.markers.length = 0}}>
+                        <CloseIcon />
+                    </CloseButton>
+                    <Headline>Crime Data</Headline>
+                    {/* <p>Hover over counties to highlight counties that share the same name.</p> */}
+                    <p>Latitude: {this.props.markers[0].latitude}</p> 
+                    <p>Longitude: {this.props.markers[0].longitude}</p>
+                    <p>Radius: {this.props.radius}</p>
+                    <p>Crime Score: {}</p>
+                    <PieChart data={pieData}>
 
-        return(
-            <InfoBox>
-                <CloseButton aria-label="close" onClick={()=>{this.props.updateCheckDataCon(false);}}>
-                    <CloseIcon />
-                  </CloseButton>
-                <Headline>Data Here</Headline>
-                <p>Hover over counties to highlight counties that share the same name.</p>
-                <p>latitude: {this.props.markers[0].latitude}</p>
-                <p>longitude: {this.props.markers[0].longitude}</p>
-                <p>radius: {}</p>
-
-            </InfoBox>
-        );
+                    </PieChart>
+                    <BarChart style={{margin:"20px"}}
+                        height={500} 
+                        width={document.getElementById("right-col").offsetWidth}
+                        data={barData}
+                        ylabel='Number of Crimes'
+                        xlabel='Year'
+                    />
+                </div>
+            );
+        }
     }
 
 

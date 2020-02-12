@@ -7,7 +7,7 @@ import Header from "./Header";
 import LeftContainer from "./LeftContainer";
 import data from "./map.geojson";
 import DataContainer from "./DataContainer";
-import {Circle} from "react-simple-shapes"
+import {Rectangle, Circle, Ellipse, Line, Polyline, CornerBox, Triangle} from 'react-shapes';
 
 export default function BigMap() {
     const SIZE = 30;
@@ -29,10 +29,6 @@ export default function BigMap() {
 
   const MyCircle = styled(Circle)`
     opacity: 0.2;
-    transform: translate(-50%, -50%);    
-    backgroundColor: red;
-    height: 200; 
-    width: 200;
   `;
 
   const [viewport,setViewport] = useState({
@@ -42,6 +38,12 @@ export default function BigMap() {
     height: "95vh",
     zoom: 10.5
   });
+
+  const [radius, updateRadius] = useState(1);
+
+  const MyMarker = styled(Marker)`
+    background: white;
+  `;
 
     const [isHovered, updateIsHovered] = useState(false);
 
@@ -68,7 +70,7 @@ export default function BigMap() {
     return (
       <div>
         <ColumnDiv className="column left">
-          <LeftContainer filters={filters} updateFilters={updateFilters}/>
+          <LeftContainer filters={filters} updateFilters={updateFilters} radius={radius} updateRadius={updateRadius}/>
         </ColumnDiv>
         <ColumnDiv className="column middle">
         <ReactMapGL
@@ -103,8 +105,9 @@ export default function BigMap() {
                         <path d={ICON} />
                       </svg>
                   </Marker>
-                  <Marker {...m} key={i} draggable={true} onDrag={handleClick}>
-                    <MyCircle viewBox="-24 -24 24 24"/>
+                  <Marker {...m} key={i+1} draggable={true} onDrag={handleClick} offsetLeft={-50*radius} offsetTop={-50*radius}>
+                    <MyCircle r={radius*50} fill={{color:'#2409ba'}}/>
+
                   </Marker>
                   
                 </div>
@@ -112,7 +115,7 @@ export default function BigMap() {
           </ReactMapGL>
         </ColumnDiv>
         <ColumnDiv className="column right" id="right-col" >
-          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon}/>
+          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius}/>
         </ColumnDiv>
       </div>
       

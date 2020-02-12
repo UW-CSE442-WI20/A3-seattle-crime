@@ -60,12 +60,12 @@ export default class LeftContainer extends PureComponent {
                     <CloseButton aria-label="close" onClick={()=>{this.props.updateCheckDataCon(false); this.props.markers.length = 0}}>
                         <CloseIcon />
                     </CloseButton>
-                    <Headline>Data Here</Headline>
-                    <p>Hover over counties to highlight counties that share the same name.</p>
-                    <p>latitude: {this.props.markers[0].latitude}</p> 
-                    <p>longitude: {this.props.markers[0].longitude}</p>
-                    <p>radius: {}</p>
-
+                    <Headline>Crime Data</Headline>
+                    {/* <p>Hover over counties to highlight counties that share the same name.</p> */}
+                    <p>Latitude: {this.props.markers[0].latitude}</p> 
+                    <p>Longitude: {this.props.markers[0].longitude}</p>
+                    <p>Radius: {this.props.radius}</p>
+                    <p>Crime Score: {}</p>
                     <PieChart data={pieData}>
 
                     </PieChart>
@@ -75,7 +75,7 @@ export default class LeftContainer extends PureComponent {
                         data={barData}
                         ylabel='Number of Crimes'
                         xlabel='Year'
-                    ></BarChart>
+                    />
                 </div>
             );
         }

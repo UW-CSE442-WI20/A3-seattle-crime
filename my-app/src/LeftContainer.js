@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}`;
 }
 
 export default function LeftContainer(props) {
@@ -59,7 +59,7 @@ const marks = [
                 <p>Hover over counties to highlight counties that share the same name.</p>
                 <div>
                     <CustomSlider
-                        defaultValue={50}
+                        defaultValue={props.radius}
                         getAriaValueText={valuetext}
                         aria-labelledby="discrete-slider"
                         max={2}
@@ -67,6 +67,7 @@ const marks = [
                         step={0.25}
                         marks={marks}
                         valueLabelDisplay="auto"
+                        onChange={(event, r)=>{props.updateRadius(r)}}
                       />
                 </div>
                 {/* <FormControlLabel

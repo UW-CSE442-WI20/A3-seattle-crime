@@ -40,7 +40,7 @@ export default function BigMap() {
       });
     }
 
-    const ENDPOINT = "https://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/";
+    const ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/";
     
 
 

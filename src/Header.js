@@ -8,7 +8,7 @@ export default function Header() {
 
     const Title = styled.div`
     margin: 0 0;
-    padding: 0px 500px;
+    padding: 0px 800px;
     font-size: 1.5em;
     display: inline-block;
 

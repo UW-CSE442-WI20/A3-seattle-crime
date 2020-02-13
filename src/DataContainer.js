@@ -61,7 +61,7 @@ export default class LeftContainer extends PureComponent {
 
     render() {
 
-        if (this.props.markers.length === 0 || !this.props.categoryData) {
+        if (this.props.markers.length === 0 || !this.props.categoryData || this.props.checkDataCon) {
             return <div></div>;
         } else {
             this.formatData();

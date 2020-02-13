@@ -19,20 +19,20 @@ const marks = [
     label: '0',
   },
   {
+    value: 0.25,
+    label: '0.25',
+  },
+  {
     value: 0.5,
     label: '0.5',
   },
   {
-    value: 1,
-    label: '1',
-  },
-  {
-      value: 1.5,
-      label: '1.5',
+      value: 0.75,
+      label: '0.75',
    },
   {
-    value: 2,
-    label: '2',
+    value: 1,
+    label: '1',
   },
 ];
 
@@ -53,18 +53,26 @@ const marks = [
         // padding: 50px;
    `;
 
+   const Space = styled.h4`
+      margin: 50px 0px 10px 0px;
+   `;
+
         return(
             <div>
-                <h3>Highlight Features Containing Similar Data</h3>
-                <p>Hover over counties to highlight counties that share the same name.</p>
+                <h3>Find how much crime occurs around you?</h3>
+                <p>Double click anywhere on a map and we will tell
+                you how much crime occurs around that area.
+                You can adjust the radius of the crime area
+                With this handy dandy slider below:</p>
+                <Space>CIRCLE RADIUS IN MILES</Space>
                 <div>
                     <CustomSlider
                         defaultValue={props.radius}
                         getAriaValueText={valuetext}
                         aria-labelledby="discrete-slider"
-                        max={2}
+                        max={1}
                         min={0}
-                        step={0.25}
+                        step={0.05}
                         marks={marks}
                         valueLabelDisplay="auto"
                         onChange={(event, r)=>{props.updateRadius(r)}}

@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dc67793e18fa425b54b4304a6416bc1e",
+    "revision": "1cab775073f69b379a934cf87f264a09",
     "url": "/A3-seattle-crime/index.html"
   },
   {
-    "revision": "f8df393ed608467fd191",
+    "revision": "58a409630dd3b1820aab",
     "url": "/A3-seattle-crime/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/A3-seattle-crime/static/js/2.49611007.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f8df393ed608467fd191",
-    "url": "/A3-seattle-crime/static/js/main.4c5e1760.chunk.js"
+    "revision": "58a409630dd3b1820aab",
+    "url": "/A3-seattle-crime/static/js/main.411e903d.chunk.js"
   },
   {
     "revision": "80d8ece77cf339f76143",

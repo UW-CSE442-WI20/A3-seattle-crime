@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/A3-seattle-crime/precache-manifest.319f5a3e9fcdf392fb32b13915059be8.js"
+  "/A3-seattle-crime/precache-manifest.e4fe51dcbc9fa5a95adf1bc6fb39ab7d.js"
 );
 
 self.addEventListener('message', (event) => {

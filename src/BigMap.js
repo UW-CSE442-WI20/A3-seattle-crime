@@ -29,8 +29,8 @@ export default function BigMap() {
     const [categoryData, setCategoryData] = useState(null);
     const [yearData, setYearData] = useState(null);
 
-    const CATEGORY_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/";
-    const YEAR_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/year/";
+    const CATEGORY_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/"; // "http://127.0.0.1:8000/crimes/";
+    const YEAR_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/year/"; // "http://127.0.0.1:8000/crimes/year/"; 
 
     const handleClick = ({lngLat: [longitude, latitude]}) => {
       setMarkers(markers => [{longitude, latitude}]);
@@ -47,16 +47,16 @@ export default function BigMap() {
       });
     }
 
-    const changeInRadius = () => {
+    const changeInRadius = (newRadius) => {
       setCategoryData(null);
-      const category_http = CATEGORY_ENDPOINT + markers[0].longitude + "/" + markers[0].latitude + "/" + radius;
+      const category_http = CATEGORY_ENDPOINT + markers[0].longitude + "/" + markers[0].latitude + "/" + newRadius;
       axios.get(category_http)
       .then((response) => {
         console.log(response.data);
         setCategoryData(response.data);
       });
       updateCheckDataCon(true);
-      const year_http = YEAR_ENDPOINT + markers[0].longitude + "/" + markers[0].latitude + "/" + radius;
+      const year_http = YEAR_ENDPOINT + markers[0].longitude + "/" + markers[0].latitude + "/" + newRadius;
       axios.get(year_http)
       .then((response) => {
         setYearData(response.data);

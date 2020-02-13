@@ -77,7 +77,7 @@ const marks = [
                         valueLabelDisplay="auto"
                         onChange={(event, r)=>{
                           if(props.checkDataCon) {
-                            props.changeInRadius();
+                            props.changeInRadius(r);
                           }
                           props.updateRadius(r)
                         }}

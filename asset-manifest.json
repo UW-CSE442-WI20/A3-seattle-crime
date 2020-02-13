@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/A3-seattle-crime/static/css/main.d1b05096.chunk.css",
-    "main.js": "/A3-seattle-crime/static/js/main.3b39babe.chunk.js",
-    "main.js.map": "/A3-seattle-crime/static/js/main.3b39babe.chunk.js.map",
+    "main.css": "/A3-seattle-crime/static/css/main.69eda509.chunk.css",
+    "main.js": "/A3-seattle-crime/static/js/main.7ee6ef0d.chunk.js",
+    "main.js.map": "/A3-seattle-crime/static/js/main.7ee6ef0d.chunk.js.map",
     "runtime-main.js": "/A3-seattle-crime/static/js/runtime-main.c61cc853.js",
     "runtime-main.js.map": "/A3-seattle-crime/static/js/runtime-main.c61cc853.js.map",
-    "static/js/2.10923b9e.chunk.js": "/A3-seattle-crime/static/js/2.10923b9e.chunk.js",
-    "static/js/2.10923b9e.chunk.js.map": "/A3-seattle-crime/static/js/2.10923b9e.chunk.js.map",
+    "static/js/2.5e1c89d6.chunk.js": "/A3-seattle-crime/static/js/2.5e1c89d6.chunk.js",
+    "static/js/2.5e1c89d6.chunk.js.map": "/A3-seattle-crime/static/js/2.5e1c89d6.chunk.js.map",
     "index.html": "/A3-seattle-crime/index.html",
-    "precache-manifest.5ea6e336fdea23b679888c7c68087eb0.js": "/A3-seattle-crime/precache-manifest.5ea6e336fdea23b679888c7c68087eb0.js",
+    "precache-manifest.b37ba6a3c45affd93b43028f4ef07a9a.js": "/A3-seattle-crime/precache-manifest.b37ba6a3c45affd93b43028f4ef07a9a.js",
     "service-worker.js": "/A3-seattle-crime/service-worker.js",
-    "static/css/main.d1b05096.chunk.css.map": "/A3-seattle-crime/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.10923b9e.chunk.js.LICENSE.txt": "/A3-seattle-crime/static/js/2.10923b9e.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/A3-seattle-crime/static/media/logo.5d5d9eef.svg"
+    "static/css/main.69eda509.chunk.css.map": "/A3-seattle-crime/static/css/main.69eda509.chunk.css.map",
+    "static/js/2.5e1c89d6.chunk.js.LICENSE.txt": "/A3-seattle-crime/static/js/2.5e1c89d6.chunk.js.LICENSE.txt",
+    "static/media/map.geojson": "/A3-seattle-crime/static/media/map.e1d7f378.geojson"
   },
   "entrypoints": [
     "static/js/runtime-main.c61cc853.js",
-    "static/js/2.10923b9e.chunk.js",
-    "static/css/main.d1b05096.chunk.css",
-    "static/js/main.3b39babe.chunk.js"
+    "static/js/2.5e1c89d6.chunk.js",
+    "static/css/main.69eda509.chunk.css",
+    "static/js/main.7ee6ef0d.chunk.js"
   ]
 }

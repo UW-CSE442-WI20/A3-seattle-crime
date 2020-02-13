@@ -26,8 +26,8 @@ var pieData = [
   ];
 
 const barData = [
-    {text: '1990', value: 500}, 
-    {text: '1991', value: 300} 
+    {text: '1990', value: 500},
+    {text: '1991', value: 300}
   ];
 
 function valuetext(value) {
@@ -47,9 +47,10 @@ function valuetext(value) {
 
 export default class LeftContainer extends PureComponent {
     formatData() {
+        pieData = [];
         for (const crime in this.props.categoryData) {
             const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-            
+
             pieData.push({
                 title: crime,
                 value: this.props.categoryData[crime],
@@ -59,7 +60,7 @@ export default class LeftContainer extends PureComponent {
     }
 
     render() {
-        
+
         if (this.props.markers.length === 0 || !this.props.categoryData) {
             return <div></div>;
         } else {
@@ -71,13 +72,13 @@ export default class LeftContainer extends PureComponent {
                         <CloseIcon />
                     </CloseButton>
                     <Headline>Crime Data</Headline>
-                    <p>Latitude: {this.props.markers[0].latitude}</p> 
+                    <p>Latitude: {this.props.markers[0].latitude}</p>
                     <p>Longitude: {this.props.markers[0].longitude}</p>
                     <p>Radius: {this.props.radius}</p>
                     <p>Crime Score: {}</p>
                     <PieChart data={pieData} />
                     <BarChart style={{margin:"20px"}}
-                        height={500} 
+                        height={500}
                         width={document.getElementById("right-col").offsetWidth}
                         data={barData}
                         ylabel='Number of Crimes'

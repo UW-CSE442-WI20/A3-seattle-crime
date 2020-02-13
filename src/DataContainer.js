@@ -5,6 +5,7 @@ import Slider from '@material-ui/core/Slider';
 import ReactMapGL, {Marker} from "react-map-gl";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import Iframe from 'react-iframe'
 
 // import PieChart from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
@@ -17,6 +18,10 @@ const CloseButton = styled(IconButton)`
     margin: 0px; 0px;
 `;
 
+const Frame = styled(Iframe)`
+    margin: 100px; 100px;
+`;
+
 const Headline = styled.div`
     font-weight: bold;
     font-size: 2em;
@@ -26,7 +31,8 @@ const Headline = styled.div`
 const Loading = styled.div`
     text-align: center;
     font-size: 2em;
-    margin: 100px 0px;
+    margin: 0px 0px;
+    color: red;
 `;
 
 
@@ -123,11 +129,42 @@ export default class LeftContainer extends PureComponent {
     }
 
     render() {
-        if (this.props.markers.length === 0 || !this.props.categoryData) {
-            return <Loading>Loading...</Loading>;
+        if (!this.props.categoryData) {
+            return <Frame url="https://giphy.com/embed/3oEjI6SIIHBdRxXI40"
+                      width="480px"
+                      height="480px"
+                      id="myId"
+                      className="giphy-embed"
+                      display="initial"
+                      position="right"
+                      frameBorder="0"
+                      />;
+        } else if (this.props.markers.length === 0 && !this.props.categoryData) {
+            return <Frame url="https://giphy.com/embed/J342sjcgjiqRLoFnQS"
+                      width="480px"
+                      height="480px"
+                      id="myId"
+                      className="giphy-embed"
+                      display="initial"
+                      position="relative"
+                      />
         } else {
+          console.log(this.props);
             this.formatPieData();
-            this.formatBarData();            
+            this.formatBarData();
+            if (pieData.labels.length == 0) {
+              return <div><Frame url="https://giphy.com/embed/J342sjcgjiqRLoFnQS"
+                        width="480px"
+                        height="480px"
+                        id="myId"
+                        className="giphy-embed"
+                        display="initial"
+                        position="relative"
+                        />
+                        <Loading>Please click a valid spot in Seattle</Loading>
+                        </div>
+            }
+
             return(
                 <div>
                     <p>Crime Score: {}</p>

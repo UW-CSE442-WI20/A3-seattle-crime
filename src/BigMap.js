@@ -47,6 +47,22 @@ export default function BigMap() {
       });
     }
 
+    const changeInRadius = () => {
+      setCategoryData(null);
+      const category_http = CATEGORY_ENDPOINT + markers[0].longitude + "/" + markers[0].latitude + "/" + radius;
+      axios.get(category_http)
+      .then((response) => {
+        console.log(response.data);
+        setCategoryData(response.data);
+      });
+      updateCheckDataCon(true);
+      const year_http = YEAR_ENDPOINT + markers[0].longitude + "/" + markers[0].latitude + "/" + radius;
+      axios.get(year_http)
+      .then((response) => {
+        setYearData(response.data);
+      });
+    }
+
   const Map = styled(Container)`
         height: 500px;
         width: 600px;
@@ -110,7 +126,7 @@ export default function BigMap() {
     return (
       <div>
         <ColumnDiv className="column left">
-          <LeftContainer filters={filters} updateFilters={updateFilters} radius={radius} updateRadius={updateRadius}/>
+          <LeftContainer filters={filters} checkDataCon={checkDataCon} updateCheckDataCon={updateCheckDataCon} changeInRadius={changeInRadius} updateFilters={updateFilters} radius={radius} updateRadius={updateRadius}/>
         </ColumnDiv>
         <ColumnDiv className="column middle">
         <ReactMapGL

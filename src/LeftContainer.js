@@ -75,7 +75,12 @@ const marks = [
                         step={0.05}
                         marks={marks}
                         valueLabelDisplay="auto"
-                        onChange={(event, r)=>{props.updateRadius(r)}}
+                        onChange={(event, r)=>{
+                          if(props.checkDataCon) {
+                            props.changeInRadius();
+                          }
+                          props.updateRadius(r)
+                        }}
                       />
                 </div>
                 {/* <FormControlLabel

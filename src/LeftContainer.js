@@ -61,7 +61,8 @@ const marks = [
             <div>
                 <h2>How much crime occurs around you?</h2>
                 <p>Double click anywhere on a map and we will tell
-                you how much crime occurs around that area.
+                you how much crime occurs around that area. Single
+                click to remove the marker.
                 You can adjust the radius of the crime area
                 with this handy dandy slider below:</p>
                 <Space>CIRCLE RADIUS IN MILES</Space>

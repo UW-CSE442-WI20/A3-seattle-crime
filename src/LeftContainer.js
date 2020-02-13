@@ -15,8 +15,8 @@ export default function LeftContainer(props) {
 
 const marks = [
   {
-    value: 0,
-    label: '0',
+    value: 0.1,
+    label: '0.1',
   },
   {
     value: 0.25,
@@ -71,7 +71,7 @@ const marks = [
                         getAriaValueText={valuetext}
                         aria-labelledby="discrete-slider"
                         max={1}
-                        min={0}
+                        min={0.1}
                         step={0.05}
                         marks={marks}
                         valueLabelDisplay="auto"

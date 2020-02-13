@@ -23,20 +23,18 @@ export default function BigMap() {
     const [countt,setCountt] = useState(0);
 
     const [radius, updateRadius] = useState(1);
-    
-
     const [markers, setMarkers] = useState([]);
+
     const [categoryData, setCategoryData] = useState(null);
 
     const handleClick = ({lngLat: [longitude, latitude]}) => {
       setMarkers(markers => [{longitude, latitude}]);
       const http = ENDPOINT + longitude + "/" + latitude + "/" + .1;
-      console.log(http);
       axios.get(http)
       .then((response) => {
-        console.log(response);
-        setCategoryData(response);
-        console.log(categoryData);
+        console.log("Response: ", response.data);
+        setCategoryData(response.data);
+        
       });
     }
 

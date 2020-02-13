@@ -21,10 +21,8 @@ const Headline = styled.div`
     text-align: center;
 `;
 
-const pieData = [
-    { title: 'Misdemeanors', value: 10, color: '#E38627' },
-    { title: 'Assaults', value: 15, color: '#C13C37' },
-    { title: 'Murders', value: 20, color: '#6A2135' },
+var pieData = [
+
   ];
 
 const barData = [
@@ -32,19 +30,15 @@ const barData = [
     {text: '1991', value: 300} 
   ];
 
-
-
 function valuetext(value) {
   return `${value}°C`;
 }
-
 //     const InfoBox = styled.div`
 //           height: 400px;
 //           width: 400px;
 //           margin: 20px 0px 0px 10px;
 //           background: white;
 //    `;
-
 //    const Box = styled.div`
 //              height: 200px;
 //              width: 350px;
@@ -52,29 +46,35 @@ function valuetext(value) {
 //       `;
 
 export default class LeftContainer extends PureComponent {
-    
+    formatData() {
+        for (const crime in this.props.categoryData) {
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            pieData.push({
+                title: crime,
+                value: this.props.categoryData[crime],
+                color: randomColor
+            })
+        }
+    }
 
     render() {
         
         if (this.props.markers.length === 0 || !this.props.categoryData) {
             return <div></div>;
         } else {
+            this.formatData();
+
             return(
                 <div>
                     <CloseButton aria-label="close" onClick={()=>{this.props.updateCheckDataCon(false); this.props.markers.length = 0}}>
                         <CloseIcon />
                     </CloseButton>
                     <Headline>Crime Data</Headline>
-                    {/* <p>Hover over counties to highlight counties that share the same name.</p> */}
                     <p>Latitude: {this.props.markers[0].latitude}</p> 
                     <p>Longitude: {this.props.markers[0].longitude}</p>
                     <p>Radius: {this.props.radius}</p>
                     <p>Crime Score: {}</p>
-                    {console.log("CATEGORY: ", this.props.categoryData)}
-                    <p>LOVE: {this.props.categoryData.statusText}</p>
-                    <PieChart data={pieData}>
-
-                    </PieChart>
+                    <PieChart data={pieData} />
                     <BarChart style={{margin:"20px"}}
                         height={500} 
                         width={document.getElementById("right-col").offsetWidth}

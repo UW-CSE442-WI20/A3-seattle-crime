@@ -1,8 +1,8 @@
 {
   "name": "A3-seattle-crime",
+  "homepage": "https://UW-CSE442-WI20.github.io/A3-seattle-crime/",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://UW-CSE442-WI20.github.io/A3-seattle-crime",
   "dependencies": {
     "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.9.1",
@@ -35,6 +35,8 @@
     "topojson": "^3.0.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

@@ -29,7 +29,7 @@ export default function BigMap() {
     const [categoryData, setCategoryData] = useState(null);
     const [yearData, setYearData] = useState(null);
 
-    const CATEGORY_ENDPOINT = http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/"; // "http://127.0.0.1:8000/crimes/";
+    const CATEGORY_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/"; // "http://127.0.0.1:8000/crimes/";
     const YEAR_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/year/"; // "http://127.0.0.1:8000/crimes/year/";
 
     const handleClick = ({lngLat: [longitude, latitude]}) => {

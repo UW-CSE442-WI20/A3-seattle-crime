@@ -1,3 +1,5 @@
+Visit the [live demo] at http://ec2-3-135-17-10.us-east-2.compute.amazonaws.com:8000
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

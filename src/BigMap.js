@@ -156,7 +156,6 @@ export default function BigMap() {
         </ColumnDiv>
         <ColumnDiv className="column right" id="right-col" >
           <Headline>Crime Data</Headline>
-
           {checkDataCon && <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius} categoryData={categoryData} yearData={yearData}/>
         }
         </ColumnDiv>

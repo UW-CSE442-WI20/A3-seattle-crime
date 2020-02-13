@@ -72,6 +72,8 @@ const NUM_BUCKETS = 15
 var pieData = {};
 var barData = {};
 
+var crimesTotal = 0;
+
 export default class LeftContainer extends PureComponent {
     formatPieData() {
         let labels = [];
@@ -100,12 +102,14 @@ export default class LeftContainer extends PureComponent {
     }
 
     formatBarData() {
+        let lastCrimeScore = 0;
         let barLabels = [];
         let bData = [];
         for (const year in this.props.yearData) {
             if (year > 2008) {
                 barLabels.push(year);
                 bData.push(this.props.yearData[year]);
+                lastCrimeScore = this.props.yearData[year];
             }
         }
         barData = {
@@ -120,6 +124,11 @@ export default class LeftContainer extends PureComponent {
                 data: bData
             }
         ]};
+        return lastCrimeScore;
+    }
+
+    calculateCrimeScore() {
+
     }
 
     render() {
@@ -127,14 +136,13 @@ export default class LeftContainer extends PureComponent {
             return <Loading>Loading...</Loading>;
         } else {
             this.formatPieData();
-            this.formatBarData();            
+            let lastYearNumOfCrimes = this.formatBarData();            
             return(
                 <div>
-                    <p>Crime Score: {}</p>
                     <div>
                         <h2>Crime Type</h2>
                     <Pie data={pieData}
-                    height={400}/>
+                    height={500}/>
                     </div>
                     <div>
                         <h2>Crimes per Year</h2>
@@ -143,6 +151,7 @@ export default class LeftContainer extends PureComponent {
                     </div>
                 </div>
             );
+            
         }
     }
 }

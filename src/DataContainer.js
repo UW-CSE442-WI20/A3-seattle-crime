@@ -23,13 +23,11 @@ const Headline = styled.div`
     text-align: center;
 `;
 
-
-
-
-function valuetext(value) {
-  return `${value}°C`;
-}
-
+const Loading = styled.div`
+    text-align: center;
+    font-size: 2em;
+    margin: 100px 0px;
+`;
 
 
 // const piedata = {
@@ -95,7 +93,7 @@ export default class LeftContainer extends PureComponent {
             labels: labels,
             datasets: [{
                 data: data,
-                backgroundColor: color, 
+                backgroundColor: color,
                 hoverBackgroundColor: color
             }]
         };
@@ -125,34 +123,27 @@ export default class LeftContainer extends PureComponent {
 
     render() {
         console.log("YEAR", this.props.yearData)
-        if (this.props.markers.length === 0 || !this.props.categoryData || this.props.checkDataCon) {
-            return <div></div>;
+        if (this.props.markers.length === 0 || !this.props.categoryData) {
+            return <Loading>Loading...</Loading>;
         } else {
             this.formatPieData();
             this.formatBarData();
 
             return(
                 <div>
-                    <CloseButton aria-label="close" onClick={()=>{this.props.updateCheckDataCon(false); this.props.markers.length = 0}}>
-                        <CloseIcon />
-                    </CloseButton>
-                    <Headline>Crime Data</Headline>
-                    <p>Latitude: {this.props.markers[0].latitude}</p>
-                    <p>Longitude: {this.props.markers[0].longitude}</p>
-                    <p>Radius: {this.props.radius}</p>
                     <p>Crime Score: {}</p>
                     <div>
                         <h2>Crime Type</h2>
-                    <Pie data={pieData} 
-                    height={500}/>
+                    <Pie data={pieData}
+                    height={400}/>
                     </div>
 
                     <div>
                         <h2>Crimes per Year</h2>
-                        <Bar data={barData} 
-                            height={500}/>
+                        <Bar data={barData}
+                            height={400}/>
                     </div>
-                 
+
                 </div>
             );
         }

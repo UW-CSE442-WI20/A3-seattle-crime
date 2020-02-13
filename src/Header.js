@@ -18,7 +18,7 @@ export default function Header() {
     return(
 
       <Header>
-        <Title>CRIME IN MY AREA</Title>
+        <Title>CRIME IN SEATTLE</Title>
       </Header>
     );
 

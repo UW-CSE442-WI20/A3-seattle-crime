@@ -1,6 +1,6 @@
 {
   "name": "A3-seattle-crime",
-  "homepage": "https://UW-CSE442-WI20.github.io/A3-seattle-crime/",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

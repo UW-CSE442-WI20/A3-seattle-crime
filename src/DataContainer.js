@@ -69,20 +69,13 @@ function valuetext(value) {
 //   }
 // ]
 
+const NUM_BUCKETS = 15
 
 var pieData = {};
 var barData = {};
 
 export default class LeftContainer extends PureComponent {
     formatPieData() {
-        // pieData = {
-        //     labels: [],
-        //     datasets: [{
-        //         data: [],
-        //         backgroundColor: [], 
-        //         hoverBackgroundColor: []
-        //     }]
-        // };
         let labels = [];
         let data = [];
         let color = [];
@@ -90,7 +83,7 @@ export default class LeftContainer extends PureComponent {
         let count = 0;
         for (const crime in this.props.categoryData) {
             count++;
-            if (count < 20) {
+            if (count < NUM_BUCKETS) {
                 const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
                 labels.push(crime);
                 data.push(this.props.categoryData[crime]);
@@ -106,18 +99,15 @@ export default class LeftContainer extends PureComponent {
                 hoverBackgroundColor: color
             }]
         };
-        console.log(pieData)
     }
 
     formatBarData() {
         let labels = [];
         let data = [];
-
-        for (const year in this.props.categoryData) {
+        for (const year in this.props.yearData) {
             labels.push(year);
             data.push(this.props.categoryData[year]);
         }
-
         barData = {
             labels: labels,
             datasets: [
@@ -134,7 +124,7 @@ export default class LeftContainer extends PureComponent {
     }
 
     render() {
-
+        console.log("YEAR", this.props.yearData)
         if (this.props.markers.length === 0 || !this.props.categoryData || this.props.checkDataCon) {
             return <div></div>;
         } else {
@@ -152,9 +142,15 @@ export default class LeftContainer extends PureComponent {
                     <p>Radius: {this.props.radius}</p>
                     <p>Crime Score: {}</p>
                     <div>
-                        <h2>Crimes per Area</h2>
+                        <h2>Crime Type</h2>
                     <Pie data={pieData} 
                     height={500}/>
+                    </div>
+
+                    <div>
+                        <h2>Crimes per Year</h2>
+                        <Bar data={barData} 
+                            height={500}/>
                     </div>
                  
                 </div>

@@ -12,6 +12,8 @@ import {Rectangle, Circle, Ellipse, Line, Polyline, CornerBox, Triangle} from 'r
 import axios from 'axios'
 
 
+
+
 export default function BigMap() {
   console.log("IM IN BIGMAP")
 
@@ -27,17 +29,27 @@ export default function BigMap() {
     const [markers, setMarkers] = useState([]);
 
     const [categoryData, setCategoryData] = useState(null);
+    const [yearData, setYearData] = useState(null);
+
+    const CATEGORY_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/";
+    const YEAR_ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/year/";
 
     const handleClick = ({lngLat: [longitude, latitude]}) => {
       setMarkers(markers => [{longitude, latitude}]);
-      const http = ENDPOINT + longitude + "/" + latitude + "/" + radius;
-      axios.get(http)
+      const category_http = CATEGORY_ENDPOINT + longitude + "/" + latitude + "/" + radius;
+      axios.get(category_http)
       .then((response) => {
         setCategoryData(response.data);
       });
+
+      const year_http = YEAR_ENDPOINT + longitude + "/" + latitude + "/" + radius;      
+      axios.get(year_http)
+      .then((response) => {
+        setYearData(response.data);
+      });
     }
 
-    const ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/";
+   
 
 
   const Map = styled(Container)`
@@ -142,7 +154,7 @@ export default function BigMap() {
           </ReactMapGL>
         </ColumnDiv>
         <ColumnDiv className="column right" id="right-col" >
-          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius} categoryData={categoryData}/>
+          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius} categoryData={categoryData} yearData={yearData}/>
         </ColumnDiv>
       </div>
 

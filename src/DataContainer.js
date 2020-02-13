@@ -112,7 +112,7 @@ export default class LeftContainer extends PureComponent {
             labels: barLabels,
             datasets: [
             {
-                lavel: "Crimes per Year",
+                label: "Crimes per Year",
                 backgroundColor: 'rgba(255,99,132,0.2)',
                 borderColor: 'rgba(255,99,132,1)',
                 hoverBackgroundColor: 'rgba(255,99,132,0.4)',
@@ -127,10 +127,7 @@ export default class LeftContainer extends PureComponent {
             return <Loading>Loading...</Loading>;
         } else {
             this.formatPieData();
-            this.formatBarData();
-
-            console.log("YEAR", barData)
-            
+            this.formatBarData();            
             return(
                 <div>
                     <p>Crime Score: {}</p>
@@ -139,13 +136,11 @@ export default class LeftContainer extends PureComponent {
                     <Pie data={pieData}
                     height={400}/>
                     </div>
-
                     <div>
                         <h2>Crimes per Year</h2>
                         <Bar data={barData}
                             height={400}/>
                     </div>
-
                 </div>
             );
         }

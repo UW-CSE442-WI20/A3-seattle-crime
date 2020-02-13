@@ -9,7 +9,12 @@ import data from "./map.geojson";
 import DataContainer from "./DataContainer";
 import {Rectangle, Circle, Ellipse, Line, Polyline, CornerBox, Triangle} from 'react-shapes';
 
+import axios from 'axios'
+
+
 export default function BigMap() {
+
+  
     const SIZE = 30;
     const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
     c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9
@@ -17,8 +22,28 @@ export default function BigMap() {
     const [count,setCount] = useState(0);
     const [countt,setCountt] = useState(0);
 
+    const [radius, updateRadius] = useState(1);
+    
+
     const [markers, setMarkers] = useState([]);
-    const handleClick = ({lngLat: [longitude, latitude]}) => setMarkers(markers => [{longitude, latitude}]);
+    const [categoryData, setCategoryData] = useState(null);
+
+    const handleClick = ({lngLat: [longitude, latitude]}) => {
+      setMarkers(markers => [{longitude, latitude}]);
+      const http = ENDPOINT + longitude + "/" + latitude + "/" + .1;
+      console.log(http);
+      axios.get(http)
+      .then((response) => {
+        console.log(response);
+        setCategoryData(response);
+        console.log(categoryData);
+      });
+    }
+
+    const ENDPOINT = "http://ec2-18-188-137-58.us-east-2.compute.amazonaws.com:8000/crimes/";
+    
+
+
 
   const Map = styled(Container)`
         height: 500px;
@@ -38,8 +63,6 @@ export default function BigMap() {
     height: "95vh",
     zoom: 10.5
   });
-
-  const [radius, updateRadius] = useState(1);
 
   const MyMarker = styled(Marker)`
     background: white;
@@ -64,9 +87,25 @@ export default function BigMap() {
     width: 30%;
     word-wrap: break-word;    
   `;
-
-  const [check, setCheck] = useState(false);
   
+  const [check, setCheck] = useState(false);
+
+  const [status, updateStatus] = useState(null);
+  
+  const handleRequest = () => { 
+    //  http = ENDPOINT + "/" + markers.latitude + "/" + markers.longitude + "/" + radius;
+    // axios.get('http://jservice.io/api/random')
+    //   .then((response) => {
+    //     console.log(response);
+    //     updateStatus(response);
+    //     console.log(status);
+    //   });
+    console.log(status);
+    
+    }
+    
+  
+
     return (
       <div>
         <ColumnDiv className="column left">
@@ -79,7 +118,12 @@ export default function BigMap() {
           mapStyle="mapbox://styles/ms1907/ck68cppyd0bbp1ipm1z710o6z"
                 
           onDblClick={handleClick}
-          onClick={() => {updateCheckDataCon(false);}
+          onClick={() => {
+              updateCheckDataCon(false); 
+              console.log("CHECK"); 
+              console.log(() => {handleRequest()});
+              handleRequest();
+            }
           }
             >
               <Marker key={"a"} latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-800} offsetTop={-400}>
@@ -115,12 +159,12 @@ export default function BigMap() {
           </ReactMapGL>
         </ColumnDiv>
         <ColumnDiv className="column right" id="right-col" >
-          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius}/>
+          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius} categoryData={categoryData}/>
         </ColumnDiv>
       </div>
       
     );
-
+  
 }
 
 

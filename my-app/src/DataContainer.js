@@ -9,6 +9,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import PieChart from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
 
+
+
 const CloseButton = styled(IconButton)`
     margin: 0px; 0px;
 `;
@@ -50,9 +52,11 @@ function valuetext(value) {
 //       `;
 
 export default class LeftContainer extends PureComponent {
+    
+
     render() {
         
-        if (this.props.markers.length === 0) {
+        if (this.props.markers.length === 0 || !this.props.categoryData) {
             return <div></div>;
         } else {
             return(
@@ -66,6 +70,8 @@ export default class LeftContainer extends PureComponent {
                     <p>Longitude: {this.props.markers[0].longitude}</p>
                     <p>Radius: {this.props.radius}</p>
                     <p>Crime Score: {}</p>
+                    {console.log("CATEGORY: ", this.props.categoryData)}
+                    <p>LOVE: {this.props.categoryData.statusText}</p>
                     <PieChart data={pieData}>
 
                     </PieChart>

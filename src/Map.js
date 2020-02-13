@@ -8,27 +8,25 @@ export default class Map extends Component {
   state = {
     showPopup: true,
     viewport: {
-    latitude: 47.6062,
-    longitude: -122.3321,
-    width: "100vw",
-    height: "95vh",
-    zoom: 11.5
+      latitude: 47.6062,
+      longitude: -122.3321,
+      width: "100vw",
+      height: "95vh",
+      zoom: 11.5
     },
     markersLat: null,
     markersLong: null,
-    };
+  };
 
 _onViewportChange = viewport => this.setState({viewport});
-
-
   render() {
     const {showPopup, viewport, markersLat, markersLong} = this.state;
     return (
       <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken="pk.eyJ1IjoibXMxOTA3IiwiYSI6ImNrNjhjMXB0eTAzZjUzZm9nbmQzMGc4Y3QifQ.ZuJyRlBq6Wo2l_RPrARpnQ"
-        mapStyle="mapbox://styles/ms1907/ck68cppyd0bbp1ipm1z710o6z"
-        onViewportChange={this._onViewportChange}
+          {...viewport}
+          mapboxApiAccessToken="pk.eyJ1IjoibXMxOTA3IiwiYSI6ImNrNjhjMXB0eTAzZjUzZm9nbmQzMGc4Y3QifQ.ZuJyRlBq6Wo2l_RPrARpnQ"
+          mapStyle="mapbox://styles/ms1907/ck68cppyd0bbp1ipm1z710o6z"
+          onViewportChange={this._onViewportChange}
         >
         {showPopup && <Popup
           latitude={viewport.latitude}

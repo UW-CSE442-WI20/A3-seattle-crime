@@ -12,7 +12,6 @@ import Map from "./Map";
 export default class App extends Component {
 
     render() {
-      console.log("IM IN APP.JS")
       
     return (
         <div>

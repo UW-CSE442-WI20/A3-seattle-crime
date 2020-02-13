@@ -102,55 +102,59 @@ export default class LeftContainer extends PureComponent {
     }
 
     formatBarData() {
-        let labels = [];
-        let data = [];
+        let barLabels = [];
+        let bData = [];
         for (const year in this.props.yearData) {
-            labels.push(year);
-            data.push(this.props.categoryData[year]);
+            if (year > 2008) {
+                barLabels.push(year);
+                bData.push(this.props.yearData[year]);
+            }
         }
         barData = {
-            labels: labels,
+            labels: barLabels,
             datasets: [
             {
-                label: 'Crimes per Year',
+                lavel: "Crimes per Year",
                 backgroundColor: 'rgba(255,99,132,0.2)',
                 borderColor: 'rgba(255,99,132,1)',
-                borderWidth: 1,
                 hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                 hoverBorderColor: 'rgba(255,99,132,1)',
-                data: data
+                data: bData
             }
         ]};
     }
 
     render() {
-        console.log("YEAR", this.props.yearData)
         if (this.props.markers.length === 0 || !this.props.categoryData || this.props.checkDataCon) {
             return <div></div>;
         } else {
             this.formatPieData();
             this.formatBarData();
 
+            console.log("YEAR", barData)
+            
             return(
                 <div>
                     <CloseButton aria-label="close" onClick={()=>{this.props.updateCheckDataCon(false); this.props.markers.length = 0}}>
                         <CloseIcon />
                     </CloseButton>
-                    <Headline>Crime Data</Headline>
+                    <h2>Crime Data</h2>
                     <p>Latitude: {this.props.markers[0].latitude}</p>
                     <p>Longitude: {this.props.markers[0].longitude}</p>
                     <p>Radius: {this.props.radius}</p>
                     <p>Crime Score: {}</p>
                     <div>
-                        <h2>Crime Type</h2>
+                        <h4>Crime Type</h4>
                     <Pie data={pieData} 
-                    height={500}/>
+                        height={500}/>
                     </div>
 
                     <div>
-                        <h2>Crimes per Year</h2>
+                        <h4>Crimes per Year</h4>
                         <Bar data={barData} 
-                            height={500}/>
+                            height={200}
+                            
+                        />
                     </div>
                  
                 </div>
@@ -158,4 +162,3 @@ export default class LeftContainer extends PureComponent {
         }
     }
 }
-/* <Bar data={barData} /> */

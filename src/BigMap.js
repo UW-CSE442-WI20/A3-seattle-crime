@@ -15,8 +15,6 @@ import axios from 'axios'
 
 
 export default function BigMap() {
-  console.log("IM IN BIGMAP")
-
 
     const SIZE = 20;
     const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
@@ -41,16 +39,13 @@ export default function BigMap() {
       .then((response) => {
         setCategoryData(response.data);
       });
-
-      const year_http = YEAR_ENDPOINT + longitude + "/" + latitude + "/" + radius;      
+      updateCheckDataCon(true);
+      const year_http = YEAR_ENDPOINT + longitude + "/" + latitude + "/" + radius;
       axios.get(year_http)
       .then((response) => {
         setYearData(response.data);
       });
     }
-
-   
-
 
   const Map = styled(Container)`
         height: 500px;
@@ -94,6 +89,12 @@ export default function BigMap() {
     width: 30%;
     word-wrap: break-word;
   `;
+  const Headline = styled.div`
+      font-weight: bold;
+      font-size: 2em;
+      text-align: center;
+  `;
+
 
   const [check, setCheck] = useState(false);
 
@@ -101,6 +102,7 @@ export default function BigMap() {
 
   const handleRequest = () => {
       setMarkers([]);
+      updateCheckDataCon(false);
     }
 
 
@@ -118,7 +120,6 @@ export default function BigMap() {
 
           onDblClick={handleClick}
           onClick={() => {
-              updateCheckDataCon(false);
               handleRequest();
             }
           }
@@ -139,7 +140,7 @@ export default function BigMap() {
                             stroke: 'none',
                             transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
                           }}
-                          onClick={() => {setCheck(true); updateCheckDataCon(true); console.log(markers)}}
+                          onClick={() => {setCheck(true); updateCheckDataCon(true);}}
                         >
                         <path d={ICON} />
                       </svg>
@@ -154,7 +155,10 @@ export default function BigMap() {
           </ReactMapGL>
         </ColumnDiv>
         <ColumnDiv className="column right" id="right-col" >
-          <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius} categoryData={categoryData} yearData={yearData}/>
+          <Headline>Crime Data</Headline>
+
+          {checkDataCon && <DataContainer markers={markers} setCheck={setCheck} updateCheckDataCon={updateCheckDataCon} radius={radius} categoryData={categoryData} yearData={yearData}/>
+        }
         </ColumnDiv>
       </div>
 

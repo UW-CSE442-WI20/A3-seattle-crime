@@ -49,6 +49,7 @@ export default class LeftContainer extends PureComponent {
     formatData() {
         for (const crime in this.props.categoryData) {
             const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            
             pieData.push({
                 title: crime,
                 value: this.props.categoryData[crime],

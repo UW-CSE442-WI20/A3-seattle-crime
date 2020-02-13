@@ -1,53 +1,68 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-# A3 Starter template
+In the project directory, you can run:
 
-The starter code for creating interactive visualization prototypes.
+### `npm start`
 
-## Getting Started
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-This repo is set up to use the [Parcel](https://parceljs.org/) bundler. If you don't
-like the way we've set things up, feel free to change it however you like!
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-The only restriction is that __your final HTML/CSS/JS output must be stored in the "docs" folder__ so that
-GitHub knows how to serve it as a static site.
+### `npm test`
 
-### Install
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### Required software
+### `npm run build`
 
-You must have Node.js installed. I prefer to install it using [nvm](https://github.com/nvm-sh/nvm)
-because it doesn't require sudo and makes upgrades easier, but you can also just get it directly from
-https://nodejs.org/en/.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-#### Install dependecies
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-Once you've got `node`, run the command `npm install` in this project folder
-and it will install all of the project-specific dependencies (if you're curious open up `package.json` to see where these are listed).
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-npm is the _node package manager_.
+### `npm run eject`
 
-### Running the local dev server
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-To run the project locally, run `npm start` and it will be available at http://localhost:1234/.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Building the final output
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Run `npm run build` and all of your assets will be compiled and placed into the `docs/` folder. Note
-that this command will overwrite the existing docs folder.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-Once pushed to GitHub, the output should be available at UW-CSE442-WI20.github.io/your-repo-name/
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Other notes
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Using 3rd party libraries
+### Code Splitting
 
-You are more than welcome to use open source packages such as D3.js, just make sure to cite these.
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-To add a new one run `npm install --save <library-name>`, e.g. `npm install --save d3`. This will
-add the library locally so it is available for use in your JS files. It will also add `d3` to the
-list of dependencies in `package.json`.
+### Analyzing the Bundle Size
 
-_Note that if you install a library your teammates will need to install it too. Once the dep is added
-to `package.json` simply running `npm install` in this directory will download the new dependency._
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

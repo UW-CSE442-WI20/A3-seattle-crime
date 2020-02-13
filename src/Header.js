@@ -20,7 +20,6 @@ export default function Header() {
       <Header>
         <Title>CRIME IN MY AREA</Title>
       </Header>
-
     );
 
 
